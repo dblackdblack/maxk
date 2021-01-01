@@ -40,7 +40,7 @@ def test_randoms():
     """
     max-K script yields same result as manually sorting and picking top-K values
     """ 
-    randlist = [randint(-2 ** 32, 2 ** 32) for _ in range(10000)]
+    randlist = set(randint(-2 ** 32, 2 ** 32) for _ in range(10000))
     test_fp = StringIO("\n".join(str(i) for i in randlist))
 
     assert maxk.scan_file(fp=test_fp, k=3) == sorted(randlist, reverse=True)[:3]
